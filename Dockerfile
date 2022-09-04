@@ -1,12 +1,6 @@
-FROM golang:latest
+FROM golang:1.18.3-alpine3.16
 
-RUN mkdir /build
-WORKDIR /build
-
-RUN export GO111MODULE=on 
-RUN cd /build && git clone https://github.com/samtechops/go-app.git
-
-
-EXPOSE 80
-
-ENTRYPOINT [ "/build/GoWebAPI/main" ]
+WORKDIR /go/src/
+COPY . .
+RUN  GOPRIVATE=github.com CGO_ENABLED=0 go build -o main .
+CMD [ "/main" ]
