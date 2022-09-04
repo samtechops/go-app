@@ -1,6 +1,5 @@
 FROM golang:latest
 
-COPY . .
 
 RUN mkdir /app
 
@@ -8,7 +7,7 @@ ADD . /app
 
 WORKDIR /app
 
-
+RUN go mod init
 RUN go build -o main .
 
 EXPOSE 80
