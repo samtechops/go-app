@@ -62,7 +62,6 @@ pipeline {
                 echo "DEPLOYMENT_IMAGE=009215683468.dkr.ecr.eu-west-1.amazonaws.com/go-web-api:${GIT_COMMIT}"
             }
         }
-
         
     }
 
