@@ -47,7 +47,7 @@ pipeline {
                 sh "aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 009215683468.dkr.ecr.eu-west-1.amazonaws.com"
                 sh "docker build -t go-web-api ."
                 sh "docker tag go-web-api:latest 009215683468.dkr.ecr.eu-west-1.amazonaws.com/go-web-api:${GIT_COMMIT}"
-                sh "trivy image --exit-code 1  --severity CRITICAL --no-progress 009215683468.dkr.ecr.eu-west-1.amazonaws.com/go-web-api:${GIT_COMMIT}"
+                sh "/usr/local/bin/trivy image --exit-code 1  --severity CRITICAL --no-progress 009215683468.dkr.ecr.eu-west-1.amazonaws.com/go-web-api:${GIT_COMMIT}"
             }
         }
         stage('Build') {
